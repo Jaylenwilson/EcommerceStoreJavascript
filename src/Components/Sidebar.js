@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Offcanvas, OffcanvasHeader, OffcanvasBody, } from 'reactstrap';
 
 
 export default function Sidebar(props) {
-    const shoppingCart = []
+    const [show, setShow] = useState(false)
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(false)
 
-    a
+
 
 
 
@@ -15,17 +17,15 @@ export default function Sidebar(props) {
             <div>
                 <Button
                     color="primary"
-                    onClick={function noRefCheck() { }}
+                    onClick={handleShow}
                 >
                     Open
-            </Button>
-                <Offcanvas
-                    backdrop={false}
-                    toggle={function noRefCheck() { }}
-                >
-                    <OffcanvasHeader toggle={function noRefCheck() { }}>
+                </Button>
+                <Offcanvas show={show}
+                    onhide={handleClose}                >
+                    <OffcanvasHeader closeButton>
                         Offcanvas
-                </OffcanvasHeader>
+                </OffcanvasHeader >
                     <OffcanvasBody>
                         <strong>
                             This is the Offcanvas body.

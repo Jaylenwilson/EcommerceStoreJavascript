@@ -5,6 +5,7 @@ import Auth from './Auth/Auth';
 import Home from './Components/Home';
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import Sidebar from './Components/Sidebar';
 
 
 function App() {
