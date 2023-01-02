@@ -1,5 +1,5 @@
 
-
+/* Auth page */
 .registerform {
   display: flex;
   height: 90vh;
@@ -13,12 +13,11 @@
   align-items: center;
 }
 
-/* .formwrapper {
- 
-} */
+
 
 /* Header */
 
+/* Home Page */
 .header {
   border: 2px solid black;
   width: 100%;
@@ -54,16 +53,14 @@
 
 
 
-
-
 .shoecolors {
   font-size: 14px;
   color: #C6C7C4;
 }
 
-/* img {
-  height: 100%;
-} */
+
+
+/* Card */
 
 .cardimg {
   width: 100%;
@@ -80,3 +77,23 @@
   font-weight: 500;
   margin-top: 3px;
 }
+/* Card end */
+
+
+/* Navbar */
+.hamburgerbtn {
+  width: 88px;
+  height: 6vh;
+}
+
+/* Sidebar */
+
+
+
+/* Home page end */
+
+
+
+
+
+
