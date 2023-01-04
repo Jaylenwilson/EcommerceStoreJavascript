@@ -138,6 +138,15 @@ export default function Sidebar(props) {
                                 </Row>
                             </Container>
                             : null}
+                        {shoppingCartActive ?
+                            <Container fluid>
+                                <Row>
+
+                                </Row>
+                            </Container>
+                            : null}
+
+                        { }
                     </OffcanvasBody>
                 </Offcanvas>
             </div>

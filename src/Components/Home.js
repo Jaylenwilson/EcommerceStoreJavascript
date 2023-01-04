@@ -6,7 +6,6 @@ import { useEffect } from 'react'
 
 const Home = (props) => {
 
-
     // useEffect to call view products function every time the page re-renders
     useEffect(() => {
         viewProducts()
