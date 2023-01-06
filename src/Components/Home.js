@@ -56,7 +56,7 @@ const Home = (props) => {
         <div className="homewrapper">
             <div className="maincontent">
                 <Container fluid>
-                    <Row>
+                    <Row >
                         {productsMap()}
                     </Row>
                 </Container>

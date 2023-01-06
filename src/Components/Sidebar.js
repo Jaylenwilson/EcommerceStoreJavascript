@@ -26,7 +26,7 @@ export default function Sidebar(props) {
         <div>
             <div>
                 <Button size='md'
-                    color="primary"
+                    color="secondary"
                     onClick={props.handleShow}
                 >
 
@@ -36,14 +36,14 @@ export default function Sidebar(props) {
                     onHide={props.handleClose}                >
                     <OffcanvasHeader closeButton>
                         <ButtonGroup size='md' aria-label="Basic example">
-                            <Button className="shoppingcart" variant="secondary"><RiShoppingCartFill size='20px' title="Shopping Cart" /></Button>
-                            <Button className="favoriteicon" variant="secondary"><MdFavorite size='20px' color="white" title="favorites" /></Button>
-                            <Button variant="secondary"><GoPackage size='20px' title="Shoebox/Orders" /></Button>
-                            <Button variant="secondary"><BsFilterCircle size='20px' title="Filters" /></Button>
-                            <Button variant="secondary"><BsSearch size='20px' title="Search" /></Button>
+                            <Button className="shoppingcart" variant="primary"><RiShoppingCartFill size='20px' title="Shopping Cart" /></Button>
+                            <Button className="favoriteicon" variant="primary"><MdFavorite size='20px' color="white" title="favorites" /></Button>
+                            <Button variant="primary"><GoPackage size='20px' title="Shoebox/Orders" /></Button>
+                            <Button variant="primary"><BsFilterCircle size='20px' title="Filters" /></Button>
+                            <Button variant="primary"><BsSearch size='20px' title="Search" /></Button>
                         </ButtonGroup>
                     </OffcanvasHeader >
-                    <OffcanvasBody>
+                    <OffcanvasBody >
                         {filtersActive ?
                             <Container fluid>
                                 <Row className="justify-content-center d-flex align-items-center my-5">

@@ -22,8 +22,8 @@ export default function Navbar() {
     return (
         <>
             <nav className="header">
-                <Container>
-                    <Row>
+                <Container fluid>
+                    <Row className="px-1">
                         <Col>
                             <Sidebar show={show} handleClose={handleClose} setShow={setShow} handleShow={handleShow} />
                         </Col>

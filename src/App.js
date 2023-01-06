@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import React from 'react'
 import Navbar from './Components/Navbar';
 import Auth from './Auth/Auth';

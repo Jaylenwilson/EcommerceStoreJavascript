@@ -12,14 +12,16 @@
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.2.3",
     "mdb-ui-kit": "^6.0.1",
+    "node-sass": "^7.0.3",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.6.0",
+    "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.4.4",
     "react-scripts": "5.0.1",
     "react-strap": "^0.0.1",
     "reactstrap": "^9.1.5",
+    "sass": "^1.57.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
