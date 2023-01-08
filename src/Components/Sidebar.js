@@ -25,36 +25,36 @@ export default function Sidebar(props) {
     return (
         <div>
             <div>
-                <Button size='md'
+                <Button className="hamburgerbtn" size='md'
                     color="secondary"
                     onClick={props.handleShow}
                 >
 
                     <GiHamburgerMenu size='32px' />
                 </Button>
-                <Offcanvas show={props.show}
+                <Offcanvas className="sidebar" show={props.show}
                     onHide={props.handleClose}                >
                     <OffcanvasHeader closeButton>
                         <ButtonGroup size='md' aria-label="Basic example">
-                            <Button className="shoppingcart" variant="primary"><RiShoppingCartFill size='20px' title="Shopping Cart" /></Button>
-                            <Button className="favoriteicon" variant="primary"><MdFavorite size='20px' color="white" title="favorites" /></Button>
-                            <Button variant="primary"><GoPackage size='20px' title="Shoebox/Orders" /></Button>
-                            <Button variant="primary"><BsFilterCircle size='20px' title="Filters" /></Button>
-                            <Button variant="primary"><BsSearch size='20px' title="Search" /></Button>
+                            <Button className="sidenavbtn" variant="primary"><RiShoppingCartFill size='20px' title="Shopping Cart" /></Button>
+                            <Button className="sidenavbtn" variant="primary"><MdFavorite size='20px' title="favorites" /></Button>
+                            <Button className="sidenavbtn" variant="primary"><GoPackage size='20px' title="Shoebox/Orders" /></Button>
+                            <Button className="sidenavbtn" variant="primary"><BsFilterCircle size='20px' title="Filters" /></Button>
+                            <Button className="sidenavbtn" variant="primary"><BsSearch size='20px' title="Search" /></Button>
                         </ButtonGroup>
                     </OffcanvasHeader >
                     <OffcanvasBody >
                         {filtersActive ?
                             <Container fluid>
-                                <Row className="justify-content-center d-flex align-items-center my-5">
-                                    <Col xs={4} className="justify-content-center d-flex align-items-center" sm={4}>
-                                        <Button size="large">Men</Button>
+                                <Row className="gendercontainer justify-content-center d-flex align-items-center my-5">
+                                    <Col xs={4} className="justify-content-center d-flex align-items-center p-0" >
+                                        <Button className="gender-filter" size="large">Men</Button>
                                     </Col>
-                                    <Col xs={4} className="justify-content-center d-flex align-items-center" sm={4}>
-                                        <Button size="large">Women</Button>
+                                    <Col xs={4} className="justify-content-center d-flex align-items-center p-0" >
+                                        <Button className="gender-filter" size="large">Women</Button>
                                     </Col>
-                                    <Col xs={4} className="justify-content-center d-flex align-items-center" sm={4}>
-                                        <Button size="large">Kids</Button>
+                                    <Col xs={4} className="justify-content-center d-flex align-items-center p-0" >
+                                        <Button className="gender-filter" size="large">Kids</Button>
                                     </Col>
                                 </Row>
                                 <h5>Sizes/US:</h5>

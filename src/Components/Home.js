@@ -36,7 +36,7 @@ const Home = (props) => {
     const productsMap = () => {
         return props.products?.map((product, index) => {
             return (
-                <Col md={4}>
+                <Col lg={3}>
                     <Card className="card" key={index}>
                         <img className="cardimg" src={product.image} alt="itemimage" />
                         <CardTitle className='title'>{product.item}</CardTitle>

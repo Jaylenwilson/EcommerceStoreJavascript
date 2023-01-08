@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, } from 'reactstrap';
 import { useState } from 'react';
 import Sidebar from './Sidebar';
+import Logo from '../assets/sluggs.png';
+
 export default function Navbar() {
 
 
@@ -28,7 +30,6 @@ export default function Navbar() {
                             <Sidebar show={show} handleClose={handleClose} setShow={setShow} handleShow={handleShow} />
                         </Col>
                         <Col>
-
                         </Col>
                         <Col>
 
