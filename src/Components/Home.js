@@ -1,63 +1,48 @@
-import React, { useState } from 'react'
-import { Container, Row, Col, Card, CardBody, CardText, CardTitle, } from 'reactstrap';
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { Container, Row, Col, Card, CardBody, CardText, CardTitle } from 'reactstrap'
 
-// Home page fetches all fo the products data and displays to the DOM
-
-const Home = (props) => {
-
-    // useEffect to call view products function every time the page re-renders
+const Home = ({ products, setProducts }) => {
     useEffect(() => {
         viewProducts()
     }, [])
 
     const viewProducts = async () => {
-        await fetch("http://localhost:3000/product/all", {
-            method: 'GET',
-            headers: new Headers({
-                "Content-Type": "application/json",
-                Authorization: `${localStorage.getItem("Authorization")}`
+        try {
+            const response = await fetch('http://localhost:3000/product/all', {
+                method: 'GET',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    Authorization: `${localStorage.getItem('Authorization')}`,
+                }),
             })
-        })
-            // converting data to json 
-            // if there is data set props.data to data.products 27 - 32
-            .then(data => data.json())
-            .then(data => {
-                if (data.products) {
-                    props.setProducts(data.products)
-                    console.log("PRODUCTSID:", data.products[0].id)
-                }
-            })
-            .catch((err) => console.log(err))
-    }
-
-    //Map function mapping eåch product into cards for display 39 -59
-
-    const productsMap = () => {
-        return props.products?.map((product, index) => {
-            return (
-                <Col lg={3}>
-                    <Card className="card" key={index}>
-                        <img className="cardimg" src={product.image} alt="itemimage" />
-                        <CardTitle className='title'>{product.item}</CardTitle>
-                        <CardBody className="card-body">
-                            <h6>{product.description}</h6>
-                            <p className='itemcolor'></p>
-                            <h5 className='price'>{product.price}</h5>
-                        </CardBody>
-                    </Card>
-                </Col>
-            )
-
-        })
+            const { products } = await response.json()
+            if (products) {
+                setProducts(products)
+                console.log('PRODUCTSID:', products[0].id)
+            }
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     return (
         <div className="homewrapper">
             <div className="maincontent">
                 <Container fluid>
-                    <Row >
-                        {productsMap()}
+                    <Row>
+                        {products?.map((product, index) => (
+                            <Col xs={12} md={6} lg={4} key={index}>
+                                <Card className="card">
+                                    <img className="cardimg" src={product.image} alt="itemimage" />
+                                    <CardTitle className="title">{product.item}</CardTitle>
+                                    <CardBody className="card-body">
+                                        <h6>{product.description}</h6>
+                                        <p className="itemcolor"></p>
+                                        <h5 className="price">{product.price}</h5>
+                                    </CardBody>
+                                </Card>
+                            </Col>
+                        ))}
                     </Row>
                 </Container>
             </div>

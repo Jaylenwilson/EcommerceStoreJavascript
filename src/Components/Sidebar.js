@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback, useReducer } from 'react';
 import { Button, Offcanvas, OffcanvasHeader, OffcanvasBody, ButtonGroup } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faBarsProgress } from '@fortawesome/free-solid-svg-icons';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { RiShoppingCartFill } from 'react-icons/ri';
 import { MdFavorite } from 'react-icons/md';
@@ -9,148 +7,239 @@ import { GoPackage } from 'react-icons/go';
 import { BsFilterCircle, BsSearch } from 'react-icons/bs';
 import { Container, Row, Col } from 'reactstrap';
 
-export default function Sidebar(props) {
+const Sidebar = ({ show, handleShow, handleClose }) => {
+    const [state, dispatch] = useReducer((state, action) => {
+        switch (action.type) {
+            case 'SHOW_WISHLIST':
+                return {
+                    ...state,
+                    section: 'wishlist',
+                    showWishlist: true,
+                    showShoppingCart: false,
+                    showOrders: false,
+                    showFilters: false,
+                    showSearch: false,
+                };
+            case 'SHOW_SHOPPING_CART':
+                return {
+                    ...state,
+                    section: 'shopping_cart',
+                    showWishlist: false,
+                    showShoppingCart: true,
+                    showOrders: false,
+                    showFilters: false,
+                    showSearch: false,
+                };
+            case 'SHOW_ORDERS':
+                return {
+                    ...state,
+                    section: 'orders',
+                    showWishlist: false,
+                    showShoppingCart: false,
+                    showOrders: true,
+                    showFilters: false,
+                    showSearch: false,
+                };
+            case 'SHOW_FILTERS':
+                return {
+                    ...state,
+                    section: 'filters',
+                    showWishlist: false,
+                    showShoppingCart: false,
+                    showOrders: false,
+                    showFilters: true,
+                    showSearch: false,
+                };
+            case 'SHOW_SEARCH':
+                return {
+                    ...state,
+                    section: 'search',
+                    showWishlist: false,
+                    showShoppingCart: false,
+                    showOrders: false,
+                    showFilters: false,
+                    showSearch: true,
+                };
+            default:
+                return state;
+        }
+    }, {
+        section: 'filters',
+        showWishlist: false,
+        showShoppingCart: false,
+        showOrders: false,
+        showFilters: true,
+        showSearch: false,
+    });
 
-    // TODO
-    // 1. create animation that transitions from toolbar to search input
-    // 2. add ternary logic that displays which ever tool is selected
-    // 3. create style that shows when a tool in toolbar is active
+    const section = useMemo(() => {
+        if (state.showWishlist) {
+            return <div>Wish List</div>;
+        }
+        if (state.showShoppingCart) {
+            return <div>Shopping Cart</div>;
+        }
+        if (state.showOrders) {
+            return <div>Orders</div>;
+        }
+        if (state.showFilters)
+            return (
+                <Container fluid>
+                    <Row className="gendercontainer justify-content-center d-flex align-items-center my-5">
+                        <Col xs={4} className="justify-content-center d-flex align-items-center p-0" sm={4}>
+                            <Button className="gender-filter" size="large">Men</Button>
+                        </Col>
+                        <Col xs={4} className="justify-content-center d-flex align-items-center p-0" >
+                            <Button className="gender-filter" size="large">Women</Button>
+                        </Col>
+                        <Col xs={4} className="justify-content-center d-flex align-items-center p-0" >
+                            <Button className="gender-filter" size="large">Kids</Button>
+                        </Col>
+                    </Row>
+                    <h5>Sizes/US:</h5>
+                    <Row className="my-3">
+                        <Col xs={2}>
+                            <Button size="small">4</Button>
+                        </Col>
+                        <Col xs={2}>
+                            <Button size="small">4.5</Button>
+                        </Col>
+                        <Col xs={2}>
+                            <Button size="small">5</Button>
+                        </Col>
+                        <Col xs={2}>
+                            <Button size="small">6</Button>
+                        </Col>
+                        <Col xs={2}>
+                            <Button size="small">6.5</Button>
+                        </Col>
+                        <Col xs={2}>
+                            <Button size="small">7</Button>
+                        </Col>
+                    </Row>
+                    <Row className="my-3">
+                        <Col xs={2}>
+                            <Button size="small">7.5</Button>
+                        </Col>
+                        <Col xs={2}>
+                            <Button size="small">8</Button>
+                        </Col>
+                        <Col xs={2}>
+                            <Button size="small">8.5</Button>
+                        </Col>
+                        <Col xs={2}>
+                            <Button size="small">9</Button>
+                        </Col>
+                        <Col xs={2}>
+                            <Button size="small">9.5</Button>
+                        </Col>
+                    </Row>
+                    <Row className="my-3">
+                        <Col xs={2}>
+                            <Button size="small">10</Button>
+                        </Col>
+                        <Col xs={2}>
+                            <Button size="small">10.5</Button>
+                        </Col>
+                        <Col xs={2}>
+                            <Button size="small">11</Button>
+                        </Col>
+                        <Col xs={2}>
+                            <Button size="small">11.5</Button>
+                        </Col>
+                        <Col xs={2}>
+                            <Button size="small">12</Button>
+                        </Col>
+                    </Row>
+                    <Row className="my-3">
+                        <Col xs={2}>
+                            <Button size="small">12.5</Button>
+                        </Col>
+                        <Col xs={2}>
+                            <Button size="small">13</Button>
+                        </Col>
+                        <Col xs={2}>
+                            <Button size="small">14</Button>
+                        </Col>
+                        <Col xs={2}>
+                            <Button size="small">15</Button>
+                        </Col>
+                    </Row>
+                    <h5>Prices:</h5>
+                    <Row className="my-4">
+                        <Col xs={6}>
+                            <Button>Lowest - Highest</Button>
+                        </Col>
+                        <Col xs={6}>
+                            <Button>Highest - Lowest</Button>
+                        </Col>
 
-    const [wishListActive, setWishListActive] = useState(false);
-    const [shoppingCartActive, setShoppingCartActive] = useState(false);
-    const [ordersActive, setOrdersActive] = useState(false);
-    const [filtersActive, setFiltersActive] = useState(true);
+                    </Row>
+                </Container>
+            );
+        if (state.showSearch) {
+            return (
+                <div>
+                    {/* search input */}
+                </div>
+            );
+        }
+        return null;
+    }, [state]);
 
+    const handleShowWishlist = useCallback(() => {
+        dispatch({ type: 'SHOW_WISHLIST' });
+    }, []);
+
+    const handleShowShoppingCart = useCallback(() => {
+        dispatch({ type: 'SHOW_SHOPPING_CART' });
+    }, []);
+
+    const handleShowOrders = useCallback(() => {
+        dispatch({ type: 'SHOW_ORDERS' });
+    }, []);
+
+    const handleShowFilters = useCallback(() => {
+        dispatch({ type: 'SHOW_FILTERS' });
+    }, []);
+
+    const handleShowSearch = useCallback(() => {
+        dispatch({ type: 'SHOW_SEARCH' });
+    }, []);
 
     return (
         <div>
             <div>
-                <Button className="hamburgerbtn" size='md'
-                    color="secondary"
-                    onClick={props.handleShow}
-                >
-
-                    <GiHamburgerMenu size='32px' />
+                <Button className="hamburgerbtn" size="md" color="secondary" onClick={handleShow}>
+                    <GiHamburgerMenu size="32px" />
                 </Button>
-                <Offcanvas className="sidebar" show={props.show}
-                    onHide={props.handleClose}                >
+                <Offcanvas className="sidebar" show={show} onHide={handleClose}>
                     <OffcanvasHeader closeButton>
-                        <ButtonGroup size='md' aria-label="Basic example">
-                            <Button className="sidenavbtn" variant="primary"><RiShoppingCartFill size='20px' title="Shopping Cart" /></Button>
-                            <Button className="sidenavbtn" variant="primary"><MdFavorite size='20px' title="favorites" /></Button>
-                            <Button className="sidenavbtn" variant="primary"><GoPackage size='20px' title="Shoebox/Orders" /></Button>
-                            <Button className="sidenavbtn" variant="primary"><BsFilterCircle size='20px' title="Filters" /></Button>
-                            <Button className="sidenavbtn" variant="primary"><BsSearch size='20px' title="Search" /></Button>
+                        <ButtonGroup size="md" aria-label="Basic example">
+                            <Button className="sidenavbtn" variant="primary" onClick={handleShowShoppingCart}>
+                                <RiShoppingCartFill size="20px" title="Shopping Cart" />
+                            </Button>
+                            <Button className="sidenavbtn" variant="primary" onClick={handleShowWishlist}>
+                                <MdFavorite size="20px" title="favorites" />
+                            </Button>
+                            <Button className="sidenavbtn" variant="primary" onClick={handleShowOrders}>
+                                <GoPackage size="20px" title="Shoebox/Orders" />
+                            </Button>
+                            <Button className="sidenavbtn" variant="primary" onClick={handleShowFilters}>
+                                <BsFilterCircle size="20px" title="Filters" />
+                            </Button>
+                            <Button className="sidenavbtn" variant="primary" onClick={handleShowSearch}>
+                                <BsSearch size="20px" title="Search" />
+                            </Button>
                         </ButtonGroup>
-                    </OffcanvasHeader >
-                    <OffcanvasBody >
-                        {filtersActive ?
-                            <Container fluid>
-                                <Row className="gendercontainer justify-content-center d-flex align-items-center my-5">
-                                    <Col xs={4} className="justify-content-center d-flex align-items-center p-0" >
-                                        <Button className="gender-filter" size="large">Men</Button>
-                                    </Col>
-                                    <Col xs={4} className="justify-content-center d-flex align-items-center p-0" >
-                                        <Button className="gender-filter" size="large">Women</Button>
-                                    </Col>
-                                    <Col xs={4} className="justify-content-center d-flex align-items-center p-0" >
-                                        <Button className="gender-filter" size="large">Kids</Button>
-                                    </Col>
-                                </Row>
-                                <h5>Sizes/US:</h5>
-                                <Row className="my-3">
-                                    <Col xs={2}>
-                                        <Button size="small">4</Button>
-                                    </Col>
-                                    <Col xs={2}>
-                                        <Button size="small">4.5</Button>
-                                    </Col>
-                                    <Col xs={2}>
-                                        <Button size="small">5</Button>
-                                    </Col>
-                                    <Col xs={2}>
-                                        <Button size="small">6</Button>
-                                    </Col>
-                                    <Col xs={2}>
-                                        <Button size="small">6.5</Button>
-                                    </Col>
-                                    <Col xs={2}>
-                                        <Button size="small">7</Button>
-                                    </Col>
-                                </Row>
-                                <Row className="my-3">
-                                    <Col xs={2}>
-                                        <Button size="small">7.5</Button>
-                                    </Col>
-                                    <Col xs={2}>
-                                        <Button size="small">8</Button>
-                                    </Col>
-                                    <Col xs={2}>
-                                        <Button size="small">8.5</Button>
-                                    </Col>
-                                    <Col xs={2}>
-                                        <Button size="small">9</Button>
-                                    </Col>
-                                    <Col xs={2}>
-                                        <Button size="small">9.5</Button>
-                                    </Col>
-                                </Row>
-                                <Row className="my-3">
-                                    <Col xs={2}>
-                                        <Button size="small">10</Button>
-                                    </Col>
-                                    <Col xs={2}>
-                                        <Button size="small">10.5</Button>
-                                    </Col>
-                                    <Col xs={2}>
-                                        <Button size="small">11</Button>
-                                    </Col>
-                                    <Col xs={2}>
-                                        <Button size="small">11.5</Button>
-                                    </Col>
-                                    <Col xs={2}>
-                                        <Button size="small">12</Button>
-                                    </Col>
-                                </Row>
-                                <Row className="my-3">
-                                    <Col xs={2}>
-                                        <Button size="small">12.5</Button>
-                                    </Col>
-                                    <Col xs={2}>
-                                        <Button size="small">13</Button>
-                                    </Col>
-                                    <Col xs={2}>
-                                        <Button size="small">14</Button>
-                                    </Col>
-                                    <Col xs={2}>
-                                        <Button size="small">15</Button>
-                                    </Col>
-                                </Row>
-                                <h5>Prices:</h5>
-                                <Row className="my-4">
-                                    <Col xs={6}>
-                                        <Button>Lowest - Highest</Button>
-                                    </Col>
-                                    <Col xs={6}>
-                                        <Button>Highest - Lowest</Button>
-                                    </Col>
-
-                                </Row>
-                            </Container>
-                            : null}
-                        {shoppingCartActive ?
-                            <Container fluid>
-                                <Row>
-
-                                </Row>
-                            </Container>
-                            : null}
-
-                        { }
+                    </OffcanvasHeader>
+                    <OffcanvasBody>
+                        {section}
                     </OffcanvasBody>
                 </Offcanvas>
             </div>
-
         </div>
-    )
-}
+    );
+};
+
+export default Sidebar;
