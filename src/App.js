@@ -17,6 +17,7 @@ function App() {
   const [role, setRole] = useState("")
   const [productId, setProductId] = useState("")
   const [products, setProducts] = useState([])
+  const [shoppingCart, setShoppingCart] = useState([])
   const navigate = useNavigate()
 
 
@@ -46,7 +47,7 @@ function App() {
         } />
 
         <Route path='/' element={
-          <Home productId={productId} setProductId={setProductId} products={products} setProducts={setProducts} />
+          <Home shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} productId={productId} setProductId={setProductId} products={products} setProducts={setProducts} />
         } />
       </Routes>
     </>
