@@ -18,6 +18,7 @@ function App() {
   const [productId, setProductId] = useState("")
   const [products, setProducts] = useState([])
   const [shoppingCart, setShoppingCart] = useState([])
+  const [listing, setListing] = useState([])
   const navigate = useNavigate()
 
 

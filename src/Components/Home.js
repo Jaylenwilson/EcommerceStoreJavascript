@@ -23,6 +23,7 @@ const Home = ({ products, setProducts, productId, setProductId }) => {
     }
 
     const viewOneProduct = async () => {
+        console.log(productId)
         try {
             const response = await fetch(`http://localhost:3000/product/${productId}`, {
                 method: 'GET',
@@ -31,7 +32,7 @@ const Home = ({ products, setProducts, productId, setProductId }) => {
                     Authorization: `${localStorage.getItem('Authorization')}`
                 })
             })
-            const { item } = await response.json()
+            const item = await response.json()
             if (item) {
                 console.log(item)
             }
@@ -42,7 +43,10 @@ const Home = ({ products, setProducts, productId, setProductId }) => {
 
     const activatePost = useCallback((p) => {
         setProductId(p)
-        viewOneProduct()
+
+        setTimeout(() => {
+            viewOneProduct()
+        }, 1000)
     }, [setProductId, viewOneProduct])
 
     const productCards = useMemo(() => {
@@ -65,9 +69,9 @@ const Home = ({ products, setProducts, productId, setProductId }) => {
         viewProducts()
     }, [])
 
-    useEffect(() => {
-        viewOneProduct()
-    }, [productId])
+    // useEffect(() => {
+    //     viewOneProduct()
+    // }, [productId])
 
     return (
         <div className="homewrapper">
