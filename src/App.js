@@ -15,7 +15,7 @@ function App() {
   const [userId, setUserId] = useState("")
   const [firstName, setFirstName] = useState("")
   const [role, setRole] = useState("")
-  const [productId, setProductId] = useState(null);
+  const [productId, setProductId] = useState("");
   const [products, setProducts] = useState([])
   const [shoppingCart, setShoppingCart] = useState([])
   const [listing, setListing] = useState([])

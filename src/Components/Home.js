@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback, useMemo } from 'react'
 import { Container, Row, Col, Card, CardBody, CardText, CardTitle } from 'reactstrap'
 
 const Home = ({ products, setProducts, productId, setProductId }) => {
+    const [clickedProduct, setClickedProduct] = useState([])
 
     const viewProducts = async () => {
         try {
@@ -15,7 +16,6 @@ const Home = ({ products, setProducts, productId, setProductId }) => {
             const { products } = await response.json()
             if (products) {
                 setProducts(products)
-                console.log('PRODUCTSID:', products[0].id)
             }
         } catch (err) {
             console.log(err)
@@ -24,6 +24,7 @@ const Home = ({ products, setProducts, productId, setProductId }) => {
 
     const viewOneProduct = async () => {
         console.log(productId)
+        if (!productId) return;
         try {
             const response = await fetch(`http://localhost:3000/product/${productId}`, {
                 method: 'GET',
@@ -35,6 +36,8 @@ const Home = ({ products, setProducts, productId, setProductId }) => {
             const item = await response.json()
             if (item) {
                 console.log(item)
+                setClickedProduct(item)
+                console.log("Clicked item ", clickedProduct)
             }
         } catch (err) {
             console.log(err)
@@ -43,9 +46,6 @@ const Home = ({ products, setProducts, productId, setProductId }) => {
 
     const activatePost = (p) => {
         setProductId(p)
-
-        // viewOneProduct()
-
     }
 
 
