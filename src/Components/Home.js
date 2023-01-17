@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react'
-import { Container, Row, Col, Card, CardBody, CardText, CardTitle } from 'reactstrap'
+import { Container, Row, Col, Card, CardBody, CardText, CardTitle, Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap'
 
-const Home = ({ products, setProducts, productId, setProductId }) => {
-    const [clickedProduct, setClickedProduct] = useState([])
+const Home = ({ products, setProducts, productId, setProductId, clickedProduct, setClickedProduct, showDetails, setShowDetails }) => {
 
     const viewProducts = async () => {
         try {
@@ -44,15 +43,16 @@ const Home = ({ products, setProducts, productId, setProductId }) => {
         }
     }
 
-    const activatePost = (p) => {
+    const activateDetails = (p) => {
         setProductId(p)
+        setShowDetails(!showDetails)
     }
 
 
     const productCards = () => {
         return products.map((product, index) => (
             <Col xs={12} md={6} lg={4} key={index}>
-                <Card onClick={() => { activatePost(product.id) }} className="card">
+                <Card onClick={() => { activateDetails(product.id) }} className="card">
                     <img className="cardimg" src={product.image} alt="itemimage" />
                     <CardTitle className="title">{product.item}</CardTitle>
                     <CardBody className="card-body">
@@ -63,6 +63,12 @@ const Home = ({ products, setProducts, productId, setProductId }) => {
                 </Card>
             </Col>
         ))
+    }
+
+    const productDetails = () => {
+        return clickedProduct.map((detail, index) => {
+
+        })
     }
 
     useEffect(() => {

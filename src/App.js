@@ -19,6 +19,8 @@ function App() {
   const [products, setProducts] = useState([])
   const [shoppingCart, setShoppingCart] = useState([])
   const [listing, setListing] = useState([])
+  const [clickedProduct, setClickedProduct] = useState([])
+  const [showDetails, setShowDetails] = useState(false)
   const navigate = useNavigate()
 
 
@@ -48,7 +50,7 @@ function App() {
         } />
 
         <Route path='/' element={
-          <Home shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} productId={productId} setProductId={setProductId} products={products} setProducts={setProducts} />
+          <Home shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} productId={productId} setProductId={setProductId} products={products} setProducts={setProducts} clickedProduct={clickedProduct} setClickedProduct={setClickedProduct} showDetails={showDetails} setShowDetails={setShowDetails} />
         } />
       </Routes>
     </>
