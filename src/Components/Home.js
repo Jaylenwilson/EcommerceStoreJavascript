@@ -41,15 +41,15 @@ const Home = ({ products, setProducts, productId, setProductId }) => {
         }
     }
 
-    const activatePost = useCallback((p) => {
+    const activatePost = (p) => {
         setProductId(p)
 
-        setTimeout(() => {
-            viewOneProduct()
-        }, 1000)
-    }, [setProductId, viewOneProduct])
+        // viewOneProduct()
 
-    const productCards = useMemo(() => {
+    }
+
+
+    const productCards = () => {
         return products.map((product, index) => (
             <Col xs={12} md={6} lg={4} key={index}>
                 <Card onClick={() => { activatePost(product.id) }} className="card">
@@ -63,22 +63,22 @@ const Home = ({ products, setProducts, productId, setProductId }) => {
                 </Card>
             </Col>
         ))
-    }, [products, activatePost])
+    }
 
     useEffect(() => {
         viewProducts()
     }, [])
 
-    // useEffect(() => {
-    //     viewOneProduct()
-    // }, [productId])
+    useEffect(() => {
+        viewOneProduct()
+    }, [productId])
 
     return (
         <div className="homewrapper">
             <div className="maincontent">
                 <Container fluid>
                     <Row>
-                        {productCards}
+                        {productCards()}
                     </Row>
                 </Container>
             </div>
