@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react'
-import { Container, Row, Col, Card, CardBody, CardText, CardTitle, Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap'
+import { ModalTitle, Modal, ModalBody, ModalHeader, ModalFooter, } from 'react-bootstrap'
+import { Container, Row, Col, Card, CardBody, CardText, CardTitle, } from 'reactstrap'
+
 
 const Home = ({ products, setProducts, productId, setProductId, clickedProduct, setClickedProduct, showDetails, setShowDetails }) => {
 
@@ -23,7 +25,8 @@ const Home = ({ products, setProducts, productId, setProductId, clickedProduct, 
 
     const viewOneProduct = async () => {
         console.log(productId)
-        if (!productId) return;
+        console.log("Clicked Product:", clickedProduct)
+        if (!productId && clickedProduct) return;
         try {
             const response = await fetch(`http://localhost:3000/product/${productId}`, {
                 method: 'GET',
@@ -45,7 +48,8 @@ const Home = ({ products, setProducts, productId, setProductId, clickedProduct, 
 
     const activateDetails = (p) => {
         setProductId(p)
-        setShowDetails(!showDetails)
+        setShowDetails(true)
+        console.log("Show details state:", showDetails)
     }
 
 
@@ -66,9 +70,17 @@ const Home = ({ products, setProducts, productId, setProductId, clickedProduct, 
     }
 
     const productDetails = () => {
-        return clickedProduct.map((detail, index) => {
-
-        })
+        if (clickedProduct && clickedProduct.product) {
+            return (
+                <ModalHeader>
+                    <h3>{clickedProduct.product.item}</h3>
+                    <img className="cardimg" src={clickedProduct.product.image} alt='product' />
+                    <p>{clickedProduct.product.description}</p>
+                    <p>{clickedProduct.product.price}</p>
+                </ModalHeader>
+            )
+        }
+        return <div>No Product details found</div>
     }
 
     useEffect(() => {
@@ -79,6 +91,10 @@ const Home = ({ products, setProducts, productId, setProductId, clickedProduct, 
         viewOneProduct()
     }, [productId])
 
+    useEffect(() => {
+        console.log(clickedProduct)
+    }, [clickedProduct])
+
     return (
         <div className="homewrapper">
             <div className="maincontent">
@@ -87,6 +103,10 @@ const Home = ({ products, setProducts, productId, setProductId, clickedProduct, 
                         {productCards()}
                     </Row>
                 </Container>
+
+                <Modal show={showDetails} onHide={() => setShowDetails(false)}>
+                    {productDetails()}
+                </Modal>
             </div>
         </div>
     )
