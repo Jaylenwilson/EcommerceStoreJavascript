@@ -72,12 +72,23 @@ const Home = ({ products, setProducts, productId, setProductId, clickedProduct, 
     const productDetails = () => {
         if (clickedProduct && clickedProduct.product) {
             return (
-                <ModalHeader>
-                    <h3>{clickedProduct.product.item}</h3>
-                    <img className="cardimg" src={clickedProduct.product.image} alt='product' />
-                    <p>{clickedProduct.product.description}</p>
-                    <p>{clickedProduct.product.price}</p>
-                </ModalHeader>
+                <>
+                    <ModalHeader closeButton>
+                        <h5>{clickedProduct.product.item}</h5>
+                    </ModalHeader>
+                    <ModalBody>
+                        <img className="cardimg" src={clickedProduct.product.image} alt='product' />
+
+                        <Container>
+                            <Row className="mt-2 d-flex align-items-center">
+                                <p>{clickedProduct.product.description}</p>
+                            </Row>
+                            <Row>
+                                <p>{clickedProduct.product.price}</p>
+                            </Row>
+                        </Container>
+                    </ModalBody>
+                </>
             )
         }
         return <div>No Product details found</div>
@@ -104,7 +115,7 @@ const Home = ({ products, setProducts, productId, setProductId, clickedProduct, 
                     </Row>
                 </Container>
 
-                <Modal show={showDetails} onHide={() => setShowDetails(false)}>
+                <Modal size={'xxl'} show={showDetails} onHide={() => setShowDetails(false)}>
                     {productDetails()}
                 </Modal>
             </div>
