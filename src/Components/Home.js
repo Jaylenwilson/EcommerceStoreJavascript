@@ -94,6 +94,8 @@ const Home = ({ products, setProducts, productId, setProductId, clickedProduct, 
         return <div>No Product details found</div>
     }
 
+
+
     useEffect(() => {
         viewProducts()
     }, [])
