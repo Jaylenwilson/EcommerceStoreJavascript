@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react'
 import { ModalTitle, Modal, ModalBody, ModalHeader, ModalFooter, } from 'react-bootstrap'
 import { Container, Row, Col, Card, CardBody, CardText, CardTitle, } from 'reactstrap'
+import Sidebar from './Sidebar';
 
 
 const Home = ({ products, setProducts, productId, setProductId, clickedProduct, setClickedProduct, showDetails, setShowDetails }) => {
@@ -110,17 +111,24 @@ const Home = ({ products, setProducts, productId, setProductId, clickedProduct, 
 
     return (
         <div className="homewrapper">
+            <div className="sidebarwrapper">
+                <Container fluid>
+                    <Col>
+                        <Sidebar />
+                    </Col>
+                </Container>
+            </div>
             <div className="maincontent">
                 <Container fluid>
                     <Row>
                         {productCards()}
                     </Row>
                 </Container>
-
-                <Modal size={'xxl'} show={showDetails} onHide={() => setShowDetails(false)}>
-                    {productDetails()}
-                </Modal>
             </div>
+
+            <Modal size={'xxl'} show={showDetails} onHide={() => setShowDetails(false)}>
+                {productDetails()}
+            </Modal>
         </div>
     )
 }

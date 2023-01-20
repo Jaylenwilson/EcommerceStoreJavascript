@@ -97,71 +97,83 @@ const Sidebar = ({ show, handleShow, handleClose }) => {
                         </Col>
                     </Row>
                     <h5>Sizes/US:</h5>
-                    <Row className="my-3">
-                        <Col xs={2}>
+                    <Row className="my-3 justify-content-center">
+                        <Col xs={6}>
                             <Button size="small">4</Button>
                         </Col>
-                        <Col xs={2}>
+                        <Col xs={6}>
                             <Button size="small">4.5</Button>
                         </Col>
-                        <Col xs={2}>
+                    </Row>
+                    <Row className="my-3 justify-content-center">
+                        <Col xs={6}>
                             <Button size="small">5</Button>
                         </Col>
-                        <Col xs={2}>
+                        <Col xs={6}>
                             <Button size="small">6</Button>
                         </Col>
-                        <Col xs={2}>
+                    </Row>
+                    <Row className="my-3 justify-content-center">
+                        <Col xs={6}>
                             <Button size="small">6.5</Button>
                         </Col>
-                        <Col xs={2}>
+                        <Col xs={6}>
                             <Button size="small">7</Button>
                         </Col>
                     </Row>
-                    <Row className="my-3">
-                        <Col xs={2}>
+                    <Row className="my-3 justify-content-center">
+                        <Col xs={6}>
                             <Button size="small">7.5</Button>
                         </Col>
-                        <Col xs={2}>
+                        <Col xs={6}>
                             <Button size="small">8</Button>
                         </Col>
-                        <Col xs={2}>
+                    </Row>
+                    <Row className="my-3 justify-content-center">
+                        <Col xs={6}>
                             <Button size="small">8.5</Button>
                         </Col>
-                        <Col xs={2}>
+                        <Col xs={6}>
                             <Button size="small">9</Button>
                         </Col>
-                        <Col xs={2}>
+                    </Row>
+                    <Row className="my-3 justify-content-center">
+                        <Col xs={6}>
                             <Button size="small">9.5</Button>
                         </Col>
-                    </Row>
-                    <Row className="my-3">
-                        <Col xs={2}>
+                        <Col xs={6}>
                             <Button size="small">10</Button>
                         </Col>
-                        <Col xs={2}>
+                    </Row>
+                    <Row className="my-3 justify-content-center">
+                        <Col xs={6}>
                             <Button size="small">10.5</Button>
                         </Col>
-                        <Col xs={2}>
+                        <Col xs={6}>
                             <Button size="small">11</Button>
                         </Col>
-                        <Col xs={2}>
+                    </Row>
+                    <Row className="my-3 justify-content-center">
+                        <Col xs={6}>
                             <Button size="small">11.5</Button>
                         </Col>
-                        <Col xs={2}>
+                        <Col xs={6}>
                             <Button size="small">12</Button>
                         </Col>
                     </Row>
-                    <Row className="my-3">
-                        <Col xs={2}>
+                    <Row className="my-3 justify-content-center">
+                        <Col xs={6}>
                             <Button size="small">12.5</Button>
                         </Col>
-                        <Col xs={2}>
+                        <Col xs={6}>
                             <Button size="small">13</Button>
                         </Col>
-                        <Col xs={2}>
+                    </Row>
+                    <Row className="my-3 justify-content-center">
+                        <Col xs={6}>
                             <Button size="small">14</Button>
                         </Col>
-                        <Col xs={2}>
+                        <Col xs={6}>
                             <Button size="small">15</Button>
                         </Col>
                     </Row>
@@ -208,37 +220,31 @@ const Sidebar = ({ show, handleShow, handleClose }) => {
     }, []);
 
     return (
-        <div>
+        <div className="sidebar">
+            <OffcanvasHeader className="justify-content-center">
+                <ButtonGroup size="md" aria-label="Basic example">
+                    <Button className="sidenavbtn" variant="primary" onClick={handleShowShoppingCart}>
+                        <RiShoppingCartFill size="20px" title="Shopping Cart" />
+                    </Button>
+                    <Button className="sidenavbtn" variant="primary" onClick={handleShowWishlist}>
+                        <MdFavorite size="20px" title="favorites" />
+                    </Button>
+                    <Button className="sidenavbtn" variant="primary" onClick={handleShowOrders}>
+                        <GoPackage size="20px" title="Shoebox/Orders" />
+                    </Button>
+                    <Button className="sidenavbtn" variant="primary" onClick={handleShowFilters}>
+                        <BsFilterCircle size="20px" title="Filters" />
+                    </Button>
+                    <Button className="sidenavbtn" variant="primary" onClick={handleShowSearch}>
+                        <BsSearch size="20px" title="Search" />
+                    </Button>
+                </ButtonGroup>
+            </OffcanvasHeader>
             <div>
-                <Button className="hamburgerbtn" size="md" color="secondary" onClick={handleShow}>
-                    <GiHamburgerMenu size="32px" />
-                </Button>
-                <Offcanvas className="sidebar" show={show} onHide={handleClose}>
-                    <OffcanvasHeader closeButton>
-                        <ButtonGroup size="md" aria-label="Basic example">
-                            <Button className="sidenavbtn" variant="primary" onClick={handleShowShoppingCart}>
-                                <RiShoppingCartFill size="20px" title="Shopping Cart" />
-                            </Button>
-                            <Button className="sidenavbtn" variant="primary" onClick={handleShowWishlist}>
-                                <MdFavorite size="20px" title="favorites" />
-                            </Button>
-                            <Button className="sidenavbtn" variant="primary" onClick={handleShowOrders}>
-                                <GoPackage size="20px" title="Shoebox/Orders" />
-                            </Button>
-                            <Button className="sidenavbtn" variant="primary" onClick={handleShowFilters}>
-                                <BsFilterCircle size="20px" title="Filters" />
-                            </Button>
-                            <Button className="sidenavbtn" variant="primary" onClick={handleShowSearch}>
-                                <BsSearch size="20px" title="Search" />
-                            </Button>
-                        </ButtonGroup>
-                    </OffcanvasHeader>
-                    <OffcanvasBody>
-                        {section}
-                    </OffcanvasBody>
-                </Offcanvas>
+                {section}
             </div>
         </div>
+
     );
 };
 

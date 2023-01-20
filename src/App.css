@@ -43,7 +43,6 @@
   /* border: 3px solid blue; */
   height: auto;
   display: flex;
-  align-items: center;
   justify-content: center;
   background-color: #3B3D3D;
 }

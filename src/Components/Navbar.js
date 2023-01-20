@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, } from 'reactstrap';
 import { useState } from 'react';
-import Sidebar from './Sidebar';
-import Logo from '../assets/sluggs.png';
+import Logo from '../assets/logo_transparent.png';
 
 export default function Navbar() {
 
@@ -25,11 +24,12 @@ export default function Navbar() {
         <>
             <nav className="header">
                 <Container fluid>
-                    <Row className="px-1">
-                        <Col>
-                            <Sidebar show={show} handleClose={handleClose} setShow={setShow} handleShow={handleShow} />
+                    <Row className="px-1 ">
+                        <Col className="d-flex justify-content-start align-items-center">
+                            {/* <Sidebar show={show} handleClose={handleClose} setShow={setShow} handleShow={handleShow} /> */}
                         </Col>
-                        <Col>
+                        <Col className="d-flex justify-content-start align-items-center">
+                            <img className='logo' src={Logo} />
                         </Col>
                         <Col>
 

@@ -42,6 +42,7 @@ function App() {
   return (
     <>
       <Navbar />
+      {/* <Sidebar /> */}
 
       <Routes>
 
