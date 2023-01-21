@@ -1,7 +1,7 @@
-$primary-color: #3B3D3D;
-$secondary-color: #4D6D3A;
+$primary-color: #f8f9fa;
+$secondary-color: #dee2e6;
 $yellow: #DEFA39;
-$primary: black;
+$primary: #bcc3c5e8;
 
 @import '~bootstrap/scss/bootstrap';
 
@@ -44,12 +44,12 @@ $primary: black;
 
 .hamburgerbtn,
 .sidenavbtn {
-  color: $yellow;
+  color: black;
   background-color: $primary-color;
   border: none;
 
   &:hover {
-    color: $yellow;
+    color: black;
     background-color: $secondary-color;
   }
 }
@@ -61,25 +61,25 @@ $primary: black;
 
 .gender-filter {
   color: $secondary-color;
-  background-color: $yellow;
+  background-color: black;
   width: 100%;
-  border-radius: 0;
-  border: 1px solid $secondary-color;
+  border-radius: 10px;
+  border: none;
 
   &:hover {
-    color: $yellow;
+    color: black;
     background-color: $secondary-color;
     outline: none;
-    border: $yellow;
+    border: black;
   }
 }
 
 .gendercontainer {
-  border: 1px solid black;
+  border: none
 }
 
 h5 {
-  color: $yellow;
+  color: black;
 }
 
 p {
@@ -90,4 +90,8 @@ p {
   width: 100%;
   height: 100px;
   object-fit: contain;
+}
+
+.card {
+  border: none;
 }

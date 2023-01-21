@@ -99,82 +99,82 @@ const Sidebar = ({ show, handleShow, handleClose }) => {
                     <h5>Sizes/US:</h5>
                     <Row className="my-3 justify-content-center">
                         <Col xs={6}>
-                            <Button size="small">4</Button>
+                            <Button size="medium">4</Button>
                         </Col>
                         <Col xs={6}>
-                            <Button size="small">4.5</Button>
-                        </Col>
-                    </Row>
-                    <Row className="my-3 justify-content-center">
-                        <Col xs={6}>
-                            <Button size="small">5</Button>
-                        </Col>
-                        <Col xs={6}>
-                            <Button size="small">6</Button>
+                            <Button size="medium">4.5</Button>
                         </Col>
                     </Row>
                     <Row className="my-3 justify-content-center">
                         <Col xs={6}>
-                            <Button size="small">6.5</Button>
+                            <Button size="medium">5</Button>
                         </Col>
                         <Col xs={6}>
-                            <Button size="small">7</Button>
-                        </Col>
-                    </Row>
-                    <Row className="my-3 justify-content-center">
-                        <Col xs={6}>
-                            <Button size="small">7.5</Button>
-                        </Col>
-                        <Col xs={6}>
-                            <Button size="small">8</Button>
+                            <Button size="medium">6</Button>
                         </Col>
                     </Row>
                     <Row className="my-3 justify-content-center">
                         <Col xs={6}>
-                            <Button size="small">8.5</Button>
+                            <Button size="medium">6.5</Button>
                         </Col>
                         <Col xs={6}>
-                            <Button size="small">9</Button>
-                        </Col>
-                    </Row>
-                    <Row className="my-3 justify-content-center">
-                        <Col xs={6}>
-                            <Button size="small">9.5</Button>
-                        </Col>
-                        <Col xs={6}>
-                            <Button size="small">10</Button>
+                            <Button size="medium">7</Button>
                         </Col>
                     </Row>
                     <Row className="my-3 justify-content-center">
                         <Col xs={6}>
-                            <Button size="small">10.5</Button>
+                            <Button size="medium">7.5</Button>
                         </Col>
                         <Col xs={6}>
-                            <Button size="small">11</Button>
-                        </Col>
-                    </Row>
-                    <Row className="my-3 justify-content-center">
-                        <Col xs={6}>
-                            <Button size="small">11.5</Button>
-                        </Col>
-                        <Col xs={6}>
-                            <Button size="small">12</Button>
+                            <Button size="medium">8</Button>
                         </Col>
                     </Row>
                     <Row className="my-3 justify-content-center">
                         <Col xs={6}>
-                            <Button size="small">12.5</Button>
+                            <Button size="medium">8.5</Button>
                         </Col>
                         <Col xs={6}>
-                            <Button size="small">13</Button>
+                            <Button size="medium">9</Button>
                         </Col>
                     </Row>
                     <Row className="my-3 justify-content-center">
                         <Col xs={6}>
-                            <Button size="small">14</Button>
+                            <Button size="medium">9.5</Button>
                         </Col>
                         <Col xs={6}>
-                            <Button size="small">15</Button>
+                            <Button size="medium">10</Button>
+                        </Col>
+                    </Row>
+                    <Row className="my-3 justify-content-center">
+                        <Col xs={6}>
+                            <Button size="medium">10.5</Button>
+                        </Col>
+                        <Col xs={6}>
+                            <Button size="medium">11</Button>
+                        </Col>
+                    </Row>
+                    <Row className="my-3 justify-content-center">
+                        <Col xs={6}>
+                            <Button size="medium">11.5</Button>
+                        </Col>
+                        <Col xs={6}>
+                            <Button size="medium">12</Button>
+                        </Col>
+                    </Row>
+                    <Row className="my-3 justify-content-center">
+                        <Col xs={6}>
+                            <Button size="medium">12.5</Button>
+                        </Col>
+                        <Col xs={6}>
+                            <Button size="medium">13</Button>
+                        </Col>
+                    </Row>
+                    <Row className="my-3 justify-content-center">
+                        <Col xs={6}>
+                            <Button size="medium">14</Button>
+                        </Col>
+                        <Col xs={6}>
+                            <Button size="medium">15</Button>
                         </Col>
                     </Row>
                     <h5>Prices:</h5>
