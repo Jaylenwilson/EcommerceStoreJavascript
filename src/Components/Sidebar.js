@@ -6,27 +6,12 @@ import { MdFavorite } from 'react-icons/md';
 import { GoPackage } from 'react-icons/go';
 import { BsFilterCircle, BsSearch } from 'react-icons/bs';
 import { Container, Row, Col } from 'reactstrap';
-import DropdownSelect from 'react-dropdown-select';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 
 
 const Sidebar = ({ show, handleShow, handleClose }) => {
 
-    const kidsDropdown = () => {
-        const options = [
-            { label: 'Boys', value: 'boys' },
-            { label: 'Girls', value: 'girls' },
-        ];
-
-        return (
-            <DropdownSelect
-                options={options}
-                value={selectedOption}
-                onChange={(value) => setSelectedOption(value)}
-                placeholder="Select Kids Category"
-            />
-        );
-    }
-    const [selectedOption, setSelectedOption] = useState([]);
+    const [selectedOption, setSelectedOption] = useState('');
     const [state, dispatch] = useReducer((state, action) => {
         switch (action.type) {
             case 'SHOW_WISHLIST':
@@ -91,6 +76,9 @@ const Sidebar = ({ show, handleShow, handleClose }) => {
         showSearch: false,
     });
 
+
+
+
     const section = useMemo(() => {
         if (state.showWishlist) {
             return <div>Wish List</div>;
@@ -104,113 +92,10 @@ const Sidebar = ({ show, handleShow, handleClose }) => {
         if (state.showFilters)
             return (
                 <div>
-                    { kidsDropdown()}
-                </div>
-
-                // <Container fluid>
-                //     <Row className="gendercontainer justify-content-center d-flex align-items-center my-5">
-                //         <Col xs={4} className="justify-content-center d-flex align-items-center p-0" sm={4}>
-                //             <Button className="gender-filter" size="large">Men</Button>
-                //         </Col>
-                //         <Col xs={4} className="justify-content-center d-flex align-items-center p-0" >
-                //             <Button className="gender-filter" size="large">Women</Button>
-                //         </Col>
-                //         <Col xs={4} className="justify-content-center d-flex align-items-center p-0" >
-                //             <Button className="gender-filter" size="large">Kids</Button>
-                //         </Col>
-                //     </Row>
-                //     <h5>Sizes/US:</h5>
-                //     <Row className="my-3 justify-content-center">
-                //         <Col xs={6}>
-                //             <Button size="medium">4</Button>
-                //         </Col>
-                //         <Col xs={6}>
-                //             <Button size="medium">4.5</Button>
-                //         </Col>
-                //     </Row>
-                //     <Row className="my-3 justify-content-center">
-                //         <Col xs={6}>
-                //             <Button size="medium">5</Button>
-                //         </Col>
-                //         <Col xs={6}>
-                //             <Button size="medium">6</Button>
-                //         </Col>
-                //     </Row>
-                //     <Row className="my-3 justify-content-center">
-                //         <Col xs={6}>
-                //             <Button size="medium">6.5</Button>
-                //         </Col>
-                //         <Col xs={6}>
-                //             <Button size="medium">7</Button>
-                //         </Col>
-                //     </Row>
-                //     <Row className="my-3 justify-content-center">
-                //         <Col xs={6}>
-                //             <Button size="medium">7.5</Button>
-                //         </Col>
-                //         <Col xs={6}>
-                //             <Button size="medium">8</Button>
-                //         </Col>
-                //     </Row>
-                //     <Row className="my-3 justify-content-center">
-                //         <Col xs={6}>
-                //             <Button size="medium">8.5</Button>
-                //         </Col>
-                //         <Col xs={6}>
-                //             <Button size="medium">9</Button>
-                //         </Col>
-                //     </Row>
-                //     <Row className="my-3 justify-content-center">
-                //         <Col xs={6}>
-                //             <Button size="medium">9.5</Button>
-                //         </Col>
-                //         <Col xs={6}>
-                //             <Button size="medium">10</Button>
-                //         </Col>
-                //     </Row>
-                //     <Row className="my-3 justify-content-center">
-                //         <Col xs={6}>
-                //             <Button size="medium">10.5</Button>
-                //         </Col>
-                //         <Col xs={6}>
-                //             <Button size="medium">11</Button>
-                //         </Col>
-                //     </Row>
-                //     <Row className="my-3 justify-content-center">
-                //         <Col xs={6}>
-                //             <Button size="medium">11.5</Button>
-                //         </Col>
-                //         <Col xs={6}>
-                //             <Button size="medium">12</Button>
-                //         </Col>
-                //     </Row>
-                //     <Row className="my-3 justify-content-center">
-                //         <Col xs={6}>
-                //             <Button size="medium">12.5</Button>
-                //         </Col>
-                //         <Col xs={6}>
-                //             <Button size="medium">13</Button>
-                //         </Col>
-                //     </Row>
-                //     <Row className="my-3 justify-content-center">
-                //         <Col xs={6}>
-                //             <Button size="medium">14</Button>
-                //         </Col>
-                //         <Col xs={6}>
-                //             <Button size="medium">15</Button>
-                //         </Col>
-                //     </Row>
-                //     <h5>Prices:</h5>
-                //     <Row className="my-4">
-                //         <Col xs={6}>
-                //             <Button>Lowest - Highest</Button>
-                //         </Col>
-                //         <Col xs={6}>
-                //             <Button>Highest - Lowest</Button>
-                //         </Col>
-
-                //     </Row>
-                // </Container>
+                    <DropdownButton id="kids-dropdown" title={selectedOption || "Select Kids Category"}>
+                        <Dropdown.Item eventKey="boys" onSelect={(eventKey) => setSelectedOption(eventKey)}>Boys</Dropdown.Item>
+                        <Dropdown.Item eventKey="girls" onSelect={(eventKey) => setSelectedOption(eventKey)}>Girls</Dropdown.Item>
+                    </DropdownButton>                </div>
             );
         if (state.showSearch) {
             return (
@@ -270,6 +155,6 @@ const Sidebar = ({ show, handleShow, handleClose }) => {
         </div>
 
     );
-};
+}
 
 export default Sidebar;
