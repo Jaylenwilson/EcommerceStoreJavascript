@@ -5,6 +5,7 @@ import Sidebar from './Sidebar';
 
 
 const Home = ({ products, setProducts, productId, setProductId, clickedProduct, setClickedProduct, showDetails, setShowDetails }) => {
+    const [selectedFilters, setSelectedFilters] = useState([]);
 
     const viewProducts = async () => {
         try {
@@ -114,7 +115,7 @@ const Home = ({ products, setProducts, productId, setProductId, clickedProduct, 
             <div className="sidebarwrapper">
                 <Container fluid>
                     <Col>
-                        <Sidebar />
+                        <Sidebar selectedFilters={selectedFilters} setSelectedFilters={setSelectedFilters} products={products} />
                     </Col>
                 </Container>
             </div>

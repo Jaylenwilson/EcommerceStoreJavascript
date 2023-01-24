@@ -4,13 +4,13 @@ import React from 'react'
 import Navbar from './Components/Navbar';
 import Auth from './Auth/Auth';
 import Home from './Components/Home';
+import Customdropdown from './Components/Customdropdown';
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import Sidebar from './Components/Sidebar';
 
 
 function App() {
-
   const [sessionToken, setSessionToken] = useState("")
   const [userId, setUserId] = useState("")
   const [firstName, setFirstName] = useState("")
@@ -52,6 +52,10 @@ function App() {
 
         <Route path='/' element={
           <Home shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} productId={productId} setProductId={setProductId} products={products} setProducts={setProducts} clickedProduct={clickedProduct} setClickedProduct={setClickedProduct} showDetails={showDetails} setShowDetails={setShowDetails} />
+        } />
+
+        <Route path='/dropdown' element={
+          <Customdropdown />
         } />
       </Routes>
     </>
