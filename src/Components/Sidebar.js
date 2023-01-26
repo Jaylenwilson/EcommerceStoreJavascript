@@ -97,9 +97,9 @@ const Sidebar = ({ show, handleShow, handleClose, products, selectedFilters, set
         if (state.showFilters)
             return (
                 <div>
-                    <DropdownButton id="filters-dropdown" title="Gender">
+                    <DropdownButton role='menuitemcheckbox' id="filters-dropdown" title="Gender">
                         <Dropdown.Item eventKey="man" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Man</Dropdown.Item>
-                        <Dropdown.Item eventKey="woman" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Woman</Dropdown.Item>
+                        <Dropdown.Item role='menuitemcheckbox' eventKey="woman" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Woman</Dropdown.Item>
                     </DropdownButton>
                     <DropdownButton id="filters-dropdown" title="Kids">
                         <Dropdown.Item eventKey="man" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Man</Dropdown.Item>

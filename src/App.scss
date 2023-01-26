@@ -2,8 +2,8 @@ $primary-color: #f8f9fa;
 $secondary-color: #dee2e6;
 $yellow: #DEFA39;
 $primary: #bcc3c5e8;
-$dropdowntransform: translate3d(0px, -11.5px, 0px);
-$dropdownposition: relative;
+$dropdowntransform: translate3d(0px, -11.5px, 0px) !important;
+$dropdownposition: relative !important;
 
 @import '~bootstrap/scss/bootstrap';
 
@@ -109,6 +109,7 @@ p {
   height: 10vh;
   background-color: transparent;
   margin-bottom: 15px;
+  position: relative;
 }
 
 .dropdown-menu {
