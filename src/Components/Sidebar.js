@@ -96,7 +96,7 @@ const Sidebar = ({ show, handleShow, handleClose, products, selectedFilters, set
         }
         if (state.showFilters)
             return (
-                <div>
+                <div className="dropdown-wrapper">
                     <DropdownButton role='menuitemcheckbox' id="filters-dropdown" title="Gender">
                         <Dropdown.Item eventKey="man" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Man</Dropdown.Item>
                         <Dropdown.Item role='menuitemcheckbox' eventKey="woman" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Woman</Dropdown.Item>
@@ -105,7 +105,7 @@ const Sidebar = ({ show, handleShow, handleClose, products, selectedFilters, set
                         <Dropdown.Item eventKey="boys" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>boys</Dropdown.Item>
                         <Dropdown.Item eventKey="girls" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>girls</Dropdown.Item>
                     </DropdownButton>
-                    <DropdownButton id="filters-dropdown" title="Shopbyprice">
+                    <DropdownButton id="filters-dropdown" title="Shop by price">
                         <Dropdown.Item eventKey="$0 - $25" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$0 - $25</Dropdown.Item>
                         <Dropdown.Item eventKey="$25 - $50" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$25 - $50</Dropdown.Item>
                         <Dropdown.Item eventKey="$50 - $100" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$50 - $100</Dropdown.Item>
@@ -181,7 +181,7 @@ const Sidebar = ({ show, handleShow, handleClose, products, selectedFilters, set
 
     return (
         <div className="sidebar">
-            <OffcanvasHeader className="justify-content-center">
+            <OffcanvasHeader className="justify-content-center mb-3">
                 <ButtonGroup size="md" aria-label="Basic example">
                     <Button className="sidenavbtn" variant="primary" onClick={handleShowShoppingCart}>
                         <RiShoppingCartFill size="20px" title="Shopping Cart" />
