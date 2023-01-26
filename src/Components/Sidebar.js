@@ -102,20 +102,38 @@ const Sidebar = ({ show, handleShow, handleClose, products, selectedFilters, set
                         <Dropdown.Item role='menuitemcheckbox' eventKey="woman" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Woman</Dropdown.Item>
                     </DropdownButton>
                     <DropdownButton id="filters-dropdown" title="Kids">
-                        <Dropdown.Item eventKey="man" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Man</Dropdown.Item>
-                        <Dropdown.Item eventKey="woman" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Woman</Dropdown.Item>
+                        <Dropdown.Item eventKey="boys" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>boys</Dropdown.Item>
+                        <Dropdown.Item eventKey="girls" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>girls</Dropdown.Item>
                     </DropdownButton>
                     <DropdownButton id="filters-dropdown" title="Shopbyprice">
-                        <Dropdown.Item eventKey="man" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Man</Dropdown.Item>
-                        <Dropdown.Item eventKey="woman" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Woman</Dropdown.Item>
+                        <Dropdown.Item eventKey="$0 - $25" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$0 - $25</Dropdown.Item>
+                        <Dropdown.Item eventKey="$25 - $50" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$25 - $50</Dropdown.Item>
+                        <Dropdown.Item eventKey="$50 - $100" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$50 - $100</Dropdown.Item>
+                        <Dropdown.Item eventKey="$100 - $150" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$100 - $150</Dropdown.Item>
+                        <Dropdown.Item eventKey="$150+" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$150+</Dropdown.Item>
                     </DropdownButton>
                     <DropdownButton id="filters-dropdown" title="Brand">
-                        <Dropdown.Item eventKey="man" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Man</Dropdown.Item>
-                        <Dropdown.Item eventKey="woman" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Woman</Dropdown.Item>
+                        <Dropdown.Item eventKey="Nike" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Nike</Dropdown.Item>
+                        <Dropdown.Item eventKey="Jordan" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Jordan</Dropdown.Item>
+                        <Dropdown.Item eventKey="Addidas" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Addidas</Dropdown.Item>
+                        <Dropdown.Item eventKey="Converse" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Converse</Dropdown.Item>
+                        <Dropdown.Item eventKey="Vans" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Vans</Dropdown.Item>
+                        <Dropdown.Item eventKey="Crocs" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Crocs</Dropdown.Item>
+                        <Dropdown.Item eventKey="Designer" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Designer</Dropdown.Item>
                     </DropdownButton>
                     <DropdownButton id="filters-dropdown" title="Color">
-                        <Dropdown.Item eventKey="man" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Man</Dropdown.Item>
-                        <Dropdown.Item eventKey="woman" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Woman</Dropdown.Item>
+                        <Dropdown.Item eventKey="black" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Black</Dropdown.Item>
+                        <Dropdown.Item eventKey="blue" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Blue</Dropdown.Item>
+                        <Dropdown.Item eventKey="brown" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Brown</Dropdown.Item>
+                        <Dropdown.Item eventKey="green" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Green</Dropdown.Item>
+                        <Dropdown.Item eventKey="gray" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Gray</Dropdown.Item>
+                        <Dropdown.Item eventKey="multi-color" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Multi-color</Dropdown.Item>
+                        <Dropdown.Item eventKey="orange" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Orange</Dropdown.Item>
+                        <Dropdown.Item eventKey="pink" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Pink</Dropdown.Item>
+                        <Dropdown.Item eventKey="purple" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Purple</Dropdown.Item>
+                        <Dropdown.Item eventKey="red" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Red</Dropdown.Item>
+                        <Dropdown.Item eventKey="white" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>White</Dropdown.Item>
+                        <Dropdown.Item eventKey="yellow" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Yellow</Dropdown.Item>
                     </DropdownButton>
                     <DropdownButton id="filters-dropdown" title="Size">
                         <Dropdown.Item eventKey="man" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Man</Dropdown.Item>
