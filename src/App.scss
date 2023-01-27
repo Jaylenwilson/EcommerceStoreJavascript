@@ -5,6 +5,7 @@ $primary: #bcc3c5e8;
 $dropdowntransform: translate3d(0px, -11.5px, 0px) !important;
 $dropdownposition: relative !important;
 
+
 @import '~bootstrap/scss/bootstrap';
 
 .maincontent {
@@ -123,12 +124,31 @@ p {
 }
 
 .dropdown-menu {
-  width: 83%;
-  z-index: 0;
+  width: 85%;
+    padding-left: 5px;
+    z-index: 0;
+    background-color: transparent;
   transform: $dropdowntransform;
     position: $dropdownposition;
-    
+    border: none;
 }
+
+.dropdown-item:active, .dropdown-item:focus {
+background-color: $primary;
+}
+
+
+.sizebtn {
+  width: 53px;
+  background-color: transparent;
+  height: 36px;
+    text-align: center;
+    border: solid 1px #e5e5e5;
+    border-radius: 5px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+}
+
 
 // .dropdown {
 //   display: flex;
