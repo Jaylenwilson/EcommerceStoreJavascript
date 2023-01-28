@@ -110,17 +110,14 @@ p {
 //     display: flex;
 // }
 
-#filters-dropdown {
-  width: 83%;
-    height: 10vh;
+.filters {
     background-color: transparent;
-    margin-bottom: 15px;
-    border-right: none;
-    border-left: none;
-    border-radius: 0;
-    border-top: 0;
-    text-align: left;
-    
+    margin-bottom: 15px;    
+}
+
+.Size__menu {
+  position: relative;
+  background-color: black;
 }
 
 .dropdown-menu {

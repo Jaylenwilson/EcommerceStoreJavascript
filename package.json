@@ -20,6 +20,7 @@
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.4.4",
     "react-scripts": "5.0.1",
+    "react-select": "^5.7.0",
     "react-strap": "^0.0.1",
     "reactstrap": "^9.1.5",
     "sass": "^1.57.1",

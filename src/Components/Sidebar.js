@@ -7,7 +7,87 @@ import { GoPackage } from 'react-icons/go';
 import { BsFilterCircle, BsSearch } from 'react-icons/bs';
 import { Container, Row, Col } from 'reactstrap';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
+import Select from 'react-select';
 
+const genderOptions = [
+    { value: 'man', label: 'Man' },
+    { value: 'woman', label: 'Woman' }
+]
+
+const kidsOptions = [
+    { value: 'boy', label: 'Boy' },
+    { value: 'girl', label: 'Girl' }
+]
+
+const brandOptions = [
+    { value: 'nike', label: 'Nike' },
+    { value: 'jordan', label: 'Jordan' },
+    { value: 'adidas', label: 'Adidas' },
+    { value: 'converse', label: 'Converse' },
+    { value: 'crocs', label: 'Crocs' },
+    { value: 'vans', label: 'Vans' },
+    { value: 'designer', label: 'Designer' }
+]
+
+const priceOptions = [
+    { value: '0-25', label: '$0 - $50' },
+    { value: '25-50', label: '$25 - $50' },
+    { value: '50-100', label: '$50 - $100' },
+    { value: '150-1000', label: '$150+' }
+]
+
+const sizeOptions = [
+    { value: '1.0', label: '1' },
+    { value: '1.5', label: '1.5' },
+    { value: '2', label: '2' },
+    { value: '2.5', label: '2.5' },
+    { value: '3', label: '3' },
+    { value: '3.5', label: '3.5' },
+    { value: '4', label: '4' },
+    { value: '4.5', label: '4.5' },
+    { value: '5', label: '5' },
+    { value: '5.5', label: '5.5' },
+    { value: '6', label: '6' },
+    { value: '6.5', label: '6.5' },
+    { value: '7', label: '7' },
+    { value: '7.5', label: '7.5' },
+    { value: '8', label: '8' },
+    { value: '8.5', label: '8.5' },
+    { value: '9', label: '9' },
+    { value: '9.5', label: '9.5' },
+    { value: '10', label: '10' },
+    { value: '10.5', label: '10.5' },
+    { value: '11', label: '11' },
+    { value: '11.5', label: '11.5' },
+    { value: '12', label: '12' },
+    { value: '12.5', label: '12.5' },
+    { value: '13', label: '13' },
+    { value: '13.5', label: '13.5' },
+    { value: '14', label: '14' },
+    { value: '14.5', label: '14.5' },
+    { value: '15', label: '15' },
+    { value: '15.5', label: '15.5' },
+    { value: '16', label: '16' },
+    { value: '16.5', label: '16.5' },
+    { value: '17', label: '17' },
+    { value: '17.5', label: '17.5' },
+    { value: '18', label: '18' },
+]
+
+const colorOptions = [
+    { value: 'blue', label: 'Blue' },
+    { value: 'brown', label: 'Brown' },
+    { value: 'green', label: 'Green' },
+    { value: 'gray', label: 'Gray' },
+    { value: 'multi-color', label: 'Multi-color' },
+    { value: 'orange', label: 'Orange' },
+    { value: 'pink', label: 'Pink' },
+    { value: 'purple', label: 'Purple' },
+    { value: 'red', label: 'Red' },
+    { value: 'white', label: 'White' },
+    { value: 'yellow', label: 'Yellow' }
+
+]
 
 const Sidebar = ({ show, handleShow, handleClose, products, selectedFilters, setSelectedFilters }) => {
 
@@ -97,132 +177,12 @@ const Sidebar = ({ show, handleShow, handleClose, products, selectedFilters, set
         if (state.showFilters)
             return (
                 <div className="dropdown-wrapper">
-                    <DropdownButton autoClose={false} role="menuitemcheckbox" id="filters-dropdown" title="Gender">
-                        <Dropdown.Menu role='menuitemcheckbox'>
-                            <Dropdown.Item itemType="" aria-checked={'false'} role='checkbox' stat eventKey="man" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Man</Dropdown.Item>
-                            <Dropdown.Item role='checkbox' eventKey="woman" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Woman</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </DropdownButton>
-                    <DropdownButton autoClose={false} id="filters-dropdown" title="Kids">
-                        <Dropdown.Item role='checkbox' eventKey="boys" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>boys</Dropdown.Item>
-                        <Dropdown.Item role='checkbox' eventKey="girls" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>girls</Dropdown.Item>
-                    </DropdownButton>
-                    <DropdownButton autoClose={false} id="filters-dropdown" title="Shop by price">
-                        <Dropdown.Item role='checkbox' eventKey="0 - 25" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$0 - $25</Dropdown.Item>
-                        <Dropdown.Item role='checkbox' eventKey="$25 - $50" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$25 - $50</Dropdown.Item>
-                        <Dropdown.Item role='checkbox' eventKey="$50 - $100" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$50 - $100</Dropdown.Item>
-                        <Dropdown.Item role='checkbox' eventKey="$100 - $150" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$100 - $150</Dropdown.Item>
-                        <Dropdown.Item role='checkbox' eventKey="$150+" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$150+</Dropdown.Item>
-                    </DropdownButton>
-                    <DropdownButton autoClose={false} id="filters-dropdown" title="Brand">
-                        <Dropdown.Item role='checkbox' eventKey="Nike" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Nike</Dropdown.Item>
-                        <Dropdown.Item role='checkbox' eventKey="Jordan" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Jordan</Dropdown.Item>
-                        <Dropdown.Item role='checkbox' eventKey="Addidas" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Addidas</Dropdown.Item>
-                        <Dropdown.Item role='checkbox' eventKey="Converse" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Converse</Dropdown.Item>
-                        <Dropdown.Item role='checkbox' eventKey="Vans" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Vans</Dropdown.Item>
-                        <Dropdown.Item role='checkbox' eventKey="Crocs" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Crocs</Dropdown.Item>
-                        <Dropdown.Item role='checkbox' eventKey="Designer" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Designer</Dropdown.Item>
-                    </DropdownButton>
-                    <DropdownButton autoClose={false} id="filters-dropdown" title="Color">
-                        <Dropdown.Item role='checkbox' eventKey="black" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Black</Dropdown.Item>
-                        <Dropdown.Item eventKey="blue" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Blue</Dropdown.Item>
-                        <Dropdown.Item eventKey="brown" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Brown</Dropdown.Item>
-                        <Dropdown.Item eventKey="green" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Green</Dropdown.Item>
-                        <Dropdown.Item eventKey="gray" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Gray</Dropdown.Item>
-                        <Dropdown.Item eventKey="multi-color" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Multi-color</Dropdown.Item>
-                        <Dropdown.Item eventKey="orange" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Orange</Dropdown.Item>
-                        <Dropdown.Item eventKey="pink" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Pink</Dropdown.Item>
-                        <Dropdown.Item eventKey="purple" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Purple</Dropdown.Item>
-                        <Dropdown.Item eventKey="red" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Red</Dropdown.Item>
-                        <Dropdown.Item eventKey="white" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>White</Dropdown.Item>
-                        <Dropdown.Item eventKey="yellow" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Yellow</Dropdown.Item>
-                    </DropdownButton>
-                    <DropdownButton autoClose={false} id="filters-dropdown" title="Size">
-                        <Row >
-                            <Col className="d-flex justify-content-center">
-                                <Button className="sizebtn" eventKey="1.0" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>1.0</Button>
-                                <Button className="sizebtn" eventKey="1.5" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>1.5</Button>
-                                <Button className="sizebtn" eventKey="2.0" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>2</Button>
-                            </Col>
-                        </Row>
-
-                        <Row >
-                            <Col className="d-flex justify-content-center">
-                                <Button className="sizebtn" eventKey="2.5" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>2.5</Button>
-                                <Button className="sizebtn" eventKey="3.0" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>3</Button>
-                                <Button className="sizebtn" eventKey="3.5" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>3.5</Button>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col className="d-flex justify-content-center">
-                                <Button className="sizebtn" eventKey="4.0" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>4</Button>
-                                <Button className="sizebtn" eventKey="4.5" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>4.5</Button>
-                                <Button className="sizebtn" eventKey="5.0" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>5</Button>
-                            </Col>
-                        </Row>
-                        <Row >
-                            <Col className="d-flex justify-content-center">
-                                <Button className="sizebtn" eventKey="5.5" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>5.5</Button>
-                                <Button className="sizebtn" eventKey="6.0" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>6</Button>
-                                <Button className="sizebtn" eventKey="6.5" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>6.5</Button>
-                            </Col>
-                        </Row>
-                        <Row >
-                            <Col className="d-flex justify-content-center">
-                                <Button className="sizebtn" eventKey="7.0" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>7</Button>
-                                <Button className="sizebtn" eventKey="7.5" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>7.5</Button>
-                                <Button className="sizebtn" eventKey="8.0" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>8</Button>
-                            </Col>
-                        </Row>
-                        <Row >
-                            <Col className="d-flex justify-content-center">
-                                <Button className="sizebtn" eventKey="8.5" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>8.5</Button>
-                                <Button className="sizebtn" eventKey="9.0" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>9</Button>
-                                <Button className="sizebtn" eventKey="9.5" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>9.5</Button>
-                            </Col>
-                        </Row>
-                        <Row >
-                            <Col className="d-flex justify-content-center">
-                                <Button className="sizebtn" eventKey="10.0" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>10</Button>
-                                <Button className="sizebtn" eventKey="10.5" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>10.5</Button>
-                                <Button className="sizebtn" eventKey="11.0" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>11</Button>
-                            </Col>
-                        </Row>
-                        <Row >
-                            <Col className="d-flex justify-content-center">
-                                <Button className="sizebtn" eventKey="11.5" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>11.5</Button>
-                                <Button className="sizebtn" eventKey="12.0" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>12</Button>
-                                <Button className="sizebtn" eventKey="12.5" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>12.5</Button>
-                            </Col>
-                        </Row>
-                        <Row >
-                            <Col className="d-flex justify-content-center">
-                                <Button className="sizebtn" eventKey="13.0" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>13</Button>
-                                <Button className="sizebtn" eventKey="13.5" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>13.5</Button>
-                                <Button className="sizebtn" eventKey="14.0" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>14</Button>
-                            </Col>
-                        </Row>
-                        <Row >
-                            <Col className="d-flex justify-content-center">
-                                <Button className="sizebtn" eventKey="14.5" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>14.5</Button>
-                                <Button className="sizebtn" eventKey="15.0" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>15</Button>
-                                <Button className="sizebtn" eventKey="15.5" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>15.5</Button>
-                            </Col>
-                        </Row>
-                        <Row >
-                            <Col className="d-flex justify-content-center">
-                                <Button className="sizebtn" eventKey="16.0" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>16</Button>
-                                <Button className="sizebtn" eventKey="16.5" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>16.5</Button>
-                                <Button className="sizebtn" eventKey="17.0" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>17</Button>
-                            </Col>
-                        </Row>
-                        <Row >
-                            <Col className="d-flex justify-content-center">
-                                <Button className="sizebtn" eventKey="17.5" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>17.5</Button>
-                                <Button className="sizebtn" eventKey="18.0" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>18</Button>
-                            </Col>
-                        </Row>
-                    </DropdownButton>
+                    <Select options={genderOptions} placeholder='Gender' isMulti={true} classNamePrefix='Gender' className='filters' />
+                    <Select options={kidsOptions} placeholder='Kids' isMulti={true} classNamePrefix='Kids' className='filters' />
+                    <Select options={brandOptions} placeholder='Brand' isMulti={true} classNamePrefix='Brand' className='filters' />
+                    <Select options={priceOptions} placeholder='Price' isMulti={true} classNamePrefix='Price' className='filters' />
+                    <Select options={colorOptions} placeholder='Colors' isMulti={true} classNamePrefix='Colors' className='filters' />
+                    <Select options={sizeOptions} isMulti={true} placeholder='Size' classNamePrefix='Size' className='filters' />
                     <div>
                         {filteredProducts.map(product => (
                             <div key={product.id}>
