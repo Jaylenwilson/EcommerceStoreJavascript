@@ -97,32 +97,34 @@ const Sidebar = ({ show, handleShow, handleClose, products, selectedFilters, set
         if (state.showFilters)
             return (
                 <div className="dropdown-wrapper">
-                    <DropdownButton autoClose={false} role='menuitemcheckbox' id="filters-dropdown" title="Gender">
-                        <Dropdown.Item eventKey="man" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Man</Dropdown.Item>
-                        <Dropdown.Item role='menuitemcheckbox' eventKey="woman" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Woman</Dropdown.Item>
+                    <DropdownButton autoClose={false} role="menuitemcheckbox" id="filters-dropdown" title="Gender">
+                        <Dropdown.Menu role='menuitemcheckbox'>
+                            <Dropdown.Item itemType="" aria-checked={'false'} role='checkbox' stat eventKey="man" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Man</Dropdown.Item>
+                            <Dropdown.Item role='checkbox' eventKey="woman" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Woman</Dropdown.Item>
+                        </Dropdown.Menu>
                     </DropdownButton>
                     <DropdownButton autoClose={false} id="filters-dropdown" title="Kids">
-                        <Dropdown.Item eventKey="boys" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>boys</Dropdown.Item>
-                        <Dropdown.Item eventKey="girls" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>girls</Dropdown.Item>
+                        <Dropdown.Item role='checkbox' eventKey="boys" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>boys</Dropdown.Item>
+                        <Dropdown.Item role='checkbox' eventKey="girls" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>girls</Dropdown.Item>
                     </DropdownButton>
                     <DropdownButton autoClose={false} id="filters-dropdown" title="Shop by price">
-                        <Dropdown.Item eventKey="0 - 25" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$0 - $25</Dropdown.Item>
-                        <Dropdown.Item eventKey="$25 - $50" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$25 - $50</Dropdown.Item>
-                        <Dropdown.Item eventKey="$50 - $100" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$50 - $100</Dropdown.Item>
-                        <Dropdown.Item eventKey="$100 - $150" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$100 - $150</Dropdown.Item>
-                        <Dropdown.Item eventKey="$150+" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$150+</Dropdown.Item>
+                        <Dropdown.Item role='checkbox' eventKey="0 - 25" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$0 - $25</Dropdown.Item>
+                        <Dropdown.Item role='checkbox' eventKey="$25 - $50" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$25 - $50</Dropdown.Item>
+                        <Dropdown.Item role='checkbox' eventKey="$50 - $100" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$50 - $100</Dropdown.Item>
+                        <Dropdown.Item role='checkbox' eventKey="$100 - $150" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$100 - $150</Dropdown.Item>
+                        <Dropdown.Item role='checkbox' eventKey="$150+" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>$150+</Dropdown.Item>
                     </DropdownButton>
                     <DropdownButton autoClose={false} id="filters-dropdown" title="Brand">
-                        <Dropdown.Item eventKey="Nike" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Nike</Dropdown.Item>
-                        <Dropdown.Item eventKey="Jordan" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Jordan</Dropdown.Item>
-                        <Dropdown.Item eventKey="Addidas" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Addidas</Dropdown.Item>
-                        <Dropdown.Item eventKey="Converse" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Converse</Dropdown.Item>
-                        <Dropdown.Item eventKey="Vans" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Vans</Dropdown.Item>
-                        <Dropdown.Item eventKey="Crocs" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Crocs</Dropdown.Item>
-                        <Dropdown.Item eventKey="Designer" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Designer</Dropdown.Item>
+                        <Dropdown.Item role='checkbox' eventKey="Nike" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Nike</Dropdown.Item>
+                        <Dropdown.Item role='checkbox' eventKey="Jordan" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Jordan</Dropdown.Item>
+                        <Dropdown.Item role='checkbox' eventKey="Addidas" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Addidas</Dropdown.Item>
+                        <Dropdown.Item role='checkbox' eventKey="Converse" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Converse</Dropdown.Item>
+                        <Dropdown.Item role='checkbox' eventKey="Vans" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Vans</Dropdown.Item>
+                        <Dropdown.Item role='checkbox' eventKey="Crocs" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Crocs</Dropdown.Item>
+                        <Dropdown.Item role='checkbox' eventKey="Designer" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Designer</Dropdown.Item>
                     </DropdownButton>
                     <DropdownButton autoClose={false} id="filters-dropdown" title="Color">
-                        <Dropdown.Item eventKey="black" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Black</Dropdown.Item>
+                        <Dropdown.Item role='checkbox' eventKey="black" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Black</Dropdown.Item>
                         <Dropdown.Item eventKey="blue" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Blue</Dropdown.Item>
                         <Dropdown.Item eventKey="brown" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Brown</Dropdown.Item>
                         <Dropdown.Item eventKey="green" onSelect={filter => setSelectedFilters([...selectedFilters, filter])}>Green</Dropdown.Item>
