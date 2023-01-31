@@ -177,7 +177,7 @@ const Sidebar = ({ show, handleShow, handleClose, products, selectedFilters, set
         if (state.showFilters)
             return (
                 <div className="dropdown-wrapper">
-                    <Select options={genderOptions} placeholder='Gender' isMulti={true} classNamePrefix='Gender' className='filters' />
+                    <Select menuPosition='relative' options={genderOptions} placeholder='Gender' isMulti={true} classNamePrefix='Gender' className='filters' />
                     <Select options={kidsOptions} placeholder='Kids' isMulti={true} classNamePrefix='Kids' className='filters' />
                     <Select options={brandOptions} placeholder='Brand' isMulti={true} classNamePrefix='Brand' className='filters' />
                     <Select options={priceOptions} placeholder='Price' isMulti={true} classNamePrefix='Price' className='filters' />

@@ -20,6 +20,11 @@ function App() {
   const [listing, setListing] = useState([])
   const [clickedProduct, setClickedProduct] = useState([])
   const [showDetails, setShowDetails] = useState(false)
+  const [selectedGender, setSelectedGender] = useState(null)
+  const [selectedBrand, setSelectedBrand] = useState(null)
+  const [selectedSize, setSelectedSize] = useState(null)
+  const [selectedColor, setSelectedColor] = useState(null)
+  const [selectedKids, setSelectedKids] = useState(null)
   const navigate = useNavigate()
 
 
