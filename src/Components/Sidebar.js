@@ -9,6 +9,8 @@ import { Container, Row, Col } from 'reactstrap';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import Select from 'react-select';
 
+
+// 1. create filter options
 const genderOptions = [
     { value: 'man', label: 'Man' },
     { value: 'woman', label: 'Woman' }
@@ -89,7 +91,7 @@ const colorOptions = [
 
 ]
 
-const Sidebar = ({ show, handleShow, handleClose, products, selectedFilters, setSelectedFilters }) => {
+const Sidebar = (props) => {
 
     const [state, dispatch] = useReducer((state, action) => {
         switch (action.type) {
@@ -155,14 +157,18 @@ const Sidebar = ({ show, handleShow, handleClose, products, selectedFilters, set
         showSearch: false,
     });
 
-
-    const filteredProducts = useMemo(() => {
-        return products.filter(product => {
-            if (selectedFilters.length === 0) return true;
-            return selectedFilters.every(filter =>
-                product.filters.includes(filter))
-        });
-    }, [products, selectedFilters])
+    // function to apply filters
+    //1. filter thru products array targeting only selected filters
+    // 2. this requires an event handler that gets the value of the selected filter when there is a change
+    // 3. then when a filter is selcetd we want to set the state of selected filters
+    //4. then we want to find products that match the selected filters and display them
+    const filteredProducts = props.products.filter(
+        product => product.brand === props.selectedBrand
+            && product.price === props.selectedPrice
+            && product.color === props.setSelectedColor
+            && product.gender === props.setSelectedGender
+            && product.setSelectedKids === props.setSelectedKids
+    )
 
     const section = useMemo(() => {
         if (state.showWishlist) {
@@ -177,12 +183,13 @@ const Sidebar = ({ show, handleShow, handleClose, products, selectedFilters, set
         if (state.showFilters)
             return (
                 <div className="dropdown-wrapper">
-                    <Select menuPosition='relative' options={genderOptions} placeholder='Gender' isMulti={true} classNamePrefix='Gender' className='filters' />
-                    <Select options={kidsOptions} placeholder='Kids' isMulti={true} classNamePrefix='Kids' className='filters' />
-                    <Select options={brandOptions} placeholder='Brand' isMulti={true} classNamePrefix='Brand' className='filters' />
-                    <Select options={priceOptions} placeholder='Price' isMulti={true} classNamePrefix='Price' className='filters' />
-                    <Select options={colorOptions} placeholder='Colors' isMulti={true} classNamePrefix='Colors' className='filters' />
-                    <Select options={sizeOptions} isMulti={true} placeholder='Size' classNamePrefix='Size' className='filters' />
+                    <Select menuPosition='relative' onChange={(selectedOption) => props.setSelectedGender(selectedOption)} options={genderOptions} placeholder='Gender' isMulti={true} classNamePrefix='Gender' className='filters' value={props.setSelectedGender} />
+                    <Select options={kidsOptions} onChange={(selectedOption) => props.setSelectedKids(selectedOption)} placeholder='Kids' isMulti={true} classNamePrefix='Kids' className='filters' value={props.selectedKids} />
+                    <Select options={brandOptions} onChange={(selectedOption) => props.setSelectedBrand(selectedOption)} placeholder='Brand' isMulti={true} classNamePrefix='Brand' className='filters' value={props.selectedBrand} />
+                    <Select options={priceOptions} onChange={(selectedOption) => props.setSelectedPrice(selectedOption)} placeholder='Price' isMulti={true} classNamePrefix='Price' className='filters' value={props.selectedPrice} />
+                    <Select options={colorOptions} onChange={(selectedOption) => props.setSelectedColor(selectedOption)} placeholder='Colors' isMulti={true} classNamePrefix='Colors' className='filters' value={props.selectedColors} />
+                    <Select options={sizeOptions} onChange={(selectedOption) => props.setSelectedSize(selectedOption)} isMulti={true} placeholder='Size' classNamePrefix='Size' className='filters' value={props.selectedSize} />
+                    {/* display filters */}
                     <div>
                         {filteredProducts.map(product => (
                             <div key={product.id}>

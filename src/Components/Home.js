@@ -96,7 +96,9 @@ const Home = ({ products, setProducts, productId, setProductId, clickedProduct, 
         return <div>No Product details found</div>
     }
 
-
+    useEffect(() => {
+        // renders the filtered products depending on if a filter is selected
+    })
 
     useEffect(() => {
         viewProducts()
@@ -120,6 +122,7 @@ const Home = ({ products, setProducts, productId, setProductId, clickedProduct, 
                 </Container>
             </div>
             <div className="maincontent">
+                {/* Ternary logic will go here saying if filters are active display filtered products if not display products */}
                 <Container fluid>
                     <Row>
                         {productCards()}
